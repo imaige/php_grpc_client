@@ -7,4 +7,5 @@ Php grpc install
 6. Install protobuf, which includes protoc (brew install protobuf or similar) 
 
 Additional requirements
-- Must add require namespace of GPBMetadata/$ServiceClass in request file
+- Protoc command: protoc --php_out=./proto_models --grpc_out=./proto_models --plugin=protoc-gen-grpc=./grpc/cmake/build/grpc_php_plugin internal_api_template_service.proto
+- Must add require namespace of GPBMetadata/$ServiceClass in request file *after* running protoc command

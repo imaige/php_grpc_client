@@ -1,0 +1,6 @@
+# all unnecessary gRPC files
+vendor/*
+!vendor/autoload.php
+
+grpc/*
+!grpc/cmake

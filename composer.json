@@ -1,0 +1,7 @@
+{
+    "name": "your/project-name",
+    "require": {
+        "grpc/grpc": "^1.43",
+        "google/protobuf": "^3.17"
+    }
+}

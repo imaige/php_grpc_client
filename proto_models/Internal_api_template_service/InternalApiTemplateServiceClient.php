@@ -34,14 +34,14 @@ class InternalApiTemplateServiceClient extends \Grpc\BaseStub {
 
     /**
      * Basic photo request
-     * @param \Internal_api_template_service\ImageRequest $argument input argument
+     * @param \Internal_api_template_service\ImageAnalysisRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
      * @return \Grpc\ServerStreamingCall
      */
-    public function InternalApiTemplateImageRequest(\Internal_api_template_service\ImageRequest $argument,
+    public function ImageAiAnalysisRequest(\Internal_api_template_service\ImageAnalysisRequest $argument,
       $metadata = [], $options = []) {
-        return $this->_serverStreamRequest('/internal_api_template_service.InternalApiTemplateService/InternalApiTemplateImageRequest',
+        return $this->_serverStreamRequest('/internal_api_template_service.InternalApiTemplateService/ImageAiAnalysisRequest',
         $argument,
         ['\Internal_api_template_service\ImageReply', 'decode'],
         $metadata, $options);

@@ -4,21 +4,28 @@
 
 namespace Internal_api_template_service;
 
+require "./proto_models/GPBMetadata/InternalApiTemplateService.php";
+
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
+// use GPBMetadata\InternalApiTemplateService;
 
 /**
- * A response message containing an image file
+ * A request message containing an image file
  *
- * Generated from protobuf message <code>internal_api_template_service.ImageReply</code>
+ * Generated from protobuf message <code>internal_api_template_service.ImageAnalysisRequest</code>
  */
-class ImageReply extends \Google\Protobuf\Internal\Message
+class ImageAnalysisRequest extends \Google\Protobuf\Internal\Message
 {
     /**
      * Generated from protobuf field <code>string b64image = 1;</code>
      */
     protected $b64image = '';
+    /**
+     * Generated from protobuf field <code>string model_name = 2;</code>
+     */
+    protected $model_name = '';
 
     /**
      * Constructor.
@@ -27,6 +34,7 @@ class ImageReply extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $b64image
+     *     @type string $model_name
      * }
      */
     public function __construct($data = NULL) {
@@ -52,6 +60,28 @@ class ImageReply extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->b64image = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string model_name = 2;</code>
+     * @return string
+     */
+    public function getModelName()
+    {
+        return $this->model_name;
+    }
+
+    /**
+     * Generated from protobuf field <code>string model_name = 2;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setModelName($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->model_name = $var;
 
         return $this;
     }

@@ -9,16 +9,14 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * A response message containing an image file
- *
- * Generated from protobuf message <code>internal_api_template_service.ImageReply</code>
+ * Generated from protobuf message <code>internal_api_template_service.StatusReply</code>
  */
-class ImageReply extends \Google\Protobuf\Internal\Message
+class StatusReply extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string b64image = 1;</code>
+     * Generated from protobuf field <code>string message = 1;</code>
      */
-    protected $b64image = '';
+    protected $message = '';
 
     /**
      * Constructor.
@@ -26,7 +24,7 @@ class ImageReply extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type string $b64image
+     *     @type string $message
      * }
      */
     public function __construct($data = NULL) {
@@ -35,23 +33,23 @@ class ImageReply extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string b64image = 1;</code>
+     * Generated from protobuf field <code>string message = 1;</code>
      * @return string
      */
-    public function getB64Image()
+    public function getMessage()
     {
-        return $this->b64image;
+        return $this->message;
     }
 
     /**
-     * Generated from protobuf field <code>string b64image = 1;</code>
+     * Generated from protobuf field <code>string message = 1;</code>
      * @param string $var
      * @return $this
      */
-    public function setB64Image($var)
+    public function setMessage($var)
     {
         GPBUtil::checkString($var, True);
-        $this->b64image = $var;
+        $this->message = $var;
 
         return $this;
     }

@@ -5,6 +5,7 @@ require './proto_models/internal_api_template_service/TemplateRequest.php';
 require './proto_models/internal_api_template_service/TemplateReply.php';
 require './proto_models/internal_api_template_service/ImageAnalysisRequest.php';
 require './proto_models/internal_api_template_service/ImageReply.php';
+require './proto_models/internal_api_template_service/StatusReply.php';
 
 
 use Grpc\ChannelCredentials;
@@ -14,6 +15,7 @@ use Internal_api_template_service\TemplateRequest;
 use Internal_api_template_service\TemplateReply;
 use Internal_api_template_service\ImageAnalysisRequest;
 use Internal_api_template_service\ImageReply;
+use Internal_api_template_service\ImageAiAnalysisRequest;
 
 // Set up the gRPC client
 $channel = new Grpc\Channel('localhost:50051', [
@@ -34,7 +36,7 @@ $imageBase64 = base64_encode($imageData);
 // Create a request message
 $request = new ImageAnalysisRequest();
 $request->setB64Image($imageBase64);
-$request->setModelName('custom_model'); // make sure to add any new fields to the .proto file and re-run protoc
+$request->setModelName("custom_model"); // make sure to add any new fields to the .proto file and re-run protoc
 
 // Call RPC request method on the server
 try {
@@ -42,8 +44,8 @@ try {
     $call = $client->ImageAiAnalysisRequest($request);
     // Iterate through the stream of responses
     foreach ($call->responses() as $response) {
-        // echo "Response from server: " . $response->getMessage() . PHP_EOL;
-        echo "Response from server: " . $response->getb64image() . PHP_EOL;
+        echo "Response from server: " . $response->getMessage() . PHP_EOL;
+        // echo "Response from server: " . $response->getb64image() . PHP_EOL;
     }
 } catch (\Exception $e) {
     echo "Error: " . $e->getMessage();

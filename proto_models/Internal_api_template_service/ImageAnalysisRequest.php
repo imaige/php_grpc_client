@@ -9,7 +9,6 @@ require "./proto_models/GPBMetadata/InternalApiTemplateService.php";
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
-// use GPBMetadata\InternalApiTemplateService;
 
 /**
  * A request message containing an image file

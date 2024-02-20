@@ -8,7 +8,7 @@ service InternalApiTemplateService {
   rpc InternalApiTemplateRequest (TemplateRequest) returns (stream TemplateReply);
 
   // Basic photo request
-  rpc ImageAiAnalysisRequest (ImageAnalysisRequest) returns (stream ImageReply) {}
+  rpc ImageAiAnalysisRequest (ImageAnalysisRequest) returns (stream StatusReply) {}
 }
 
 // A basic request message
@@ -30,4 +30,8 @@ message ImageAnalysisRequest{
 // A response message containing an image file
 message ImageReply{
   string b64image = 1;
+}
+
+message StatusReply {
+  string message = 1;
 }

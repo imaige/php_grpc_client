@@ -43,7 +43,7 @@ class InternalApiTemplateServiceClient extends \Grpc\BaseStub {
       $metadata = [], $options = []) {
         return $this->_serverStreamRequest('/internal_api_template_service.InternalApiTemplateService/ImageAiAnalysisRequest',
         $argument,
-        ['\Internal_api_template_service\ImageReply', 'decode'],
+        ['\Internal_api_template_service\StatusReply', 'decode'],
         $metadata, $options);
     }
 

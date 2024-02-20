@@ -1,12 +1,12 @@
 <?php
 require 'vendor/autoload.php';
 require './proto_models/Information_superhighway/InformationSuperhighwayServiceClient.php';
-require './proto_models/internal_api_template_service/TemplateRequest.php';
-require './proto_models/internal_api_template_service/TemplateReply.php';
 require './proto_models/Information_superhighway/ImageAnalysisRequest.php';
-require './proto_models/internal_api_template_service/ImageReply.php';
 require './proto_models/Information_superhighway/StatusReply.php';
 
+require './proto_models/internal_api_template_service/TemplateRequest.php';
+require './proto_models/internal_api_template_service/TemplateReply.php';
+require './proto_models/internal_api_template_service/ImageReply.php';
 
 use Grpc\ChannelCredentials;
 use Google\Protobuf\BytesValue;

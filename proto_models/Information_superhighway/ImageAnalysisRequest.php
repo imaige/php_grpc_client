@@ -25,6 +25,14 @@ class ImageAnalysisRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string model_name = 2;</code>
      */
     protected $model_name = '';
+    /**
+     * Generated from protobuf field <code>string run_id = 3;</code>
+     */
+    protected $run_id = '';
+    /**
+     * Generated from protobuf field <code>string image_id = 4;</code>
+     */
+    protected $image_id = '';
 
     /**
      * Constructor.
@@ -34,6 +42,8 @@ class ImageAnalysisRequest extends \Google\Protobuf\Internal\Message
      *
      *     @type string $b64image
      *     @type string $model_name
+     *     @type string $run_id
+     *     @type string $image_id
      * }
      */
     public function __construct($data = NULL) {
@@ -81,6 +91,50 @@ class ImageAnalysisRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->model_name = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string run_id = 3;</code>
+     * @return string
+     */
+    public function getRunId()
+    {
+        return $this->run_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string run_id = 3;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setRunId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->run_id = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string image_id = 4;</code>
+     * @return string
+     */
+    public function getImageId()
+    {
+        return $this->image_id;
+    }
+
+    /**
+     * Generated from protobuf field <code>string image_id = 4;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setImageId($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->image_id = $var;
 
         return $this;
     }

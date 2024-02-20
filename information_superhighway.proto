@@ -12,6 +12,8 @@ service InformationSuperhighwayService {
 message ImageAnalysisRequest {
     string b64image = 1;
     string model_name = 2;
+    string run_id = 3;
+    string image_id = 4;
 }
 
 // A basic status response message

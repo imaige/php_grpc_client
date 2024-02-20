@@ -1,11 +1,11 @@
 <?php
 require 'vendor/autoload.php';
-require './proto_models/internal_api_template_service/InternalApiTemplateServiceClient.php';
+require './proto_models/Information_superhighway/InformationSuperhighwayServiceClient.php';
 require './proto_models/internal_api_template_service/TemplateRequest.php';
 require './proto_models/internal_api_template_service/TemplateReply.php';
-require './proto_models/internal_api_template_service/ImageAnalysisRequest.php';
+require './proto_models/Information_superhighway/ImageAnalysisRequest.php';
 require './proto_models/internal_api_template_service/ImageReply.php';
-require './proto_models/internal_api_template_service/StatusReply.php';
+require './proto_models/Information_superhighway/StatusReply.php';
 
 
 use Grpc\ChannelCredentials;
@@ -13,9 +13,12 @@ use Google\Protobuf\BytesValue;
 use Internal_api_template_service\InternalApiTemplateServiceClient;
 use Internal_api_template_service\TemplateRequest;
 use Internal_api_template_service\TemplateReply;
-use Internal_api_template_service\ImageAnalysisRequest;
+// use Internal_api_template_service\ImageAnalysisRequest;
 use Internal_api_template_service\ImageReply;
-use Internal_api_template_service\ImageAiAnalysisRequest;
+//use Internal_api_template_service\ImageAiAnalysisRequest;
+use Information_superhighway\InformationSuperhighwayServiceClient;
+use Information_superhighway\ImageAnalysisRequest;
+use Information_superhighway\StatusReply;
 
 // Set up the gRPC client
 $channel = new Grpc\Channel('localhost:50051', [
@@ -23,7 +26,7 @@ $channel = new Grpc\Channel('localhost:50051', [
 ]);
 $hostname = 'localhost:50051';
 $opts = [];
-$client = new InternalApiTemplateServiceClient($hostname, $opts, $channel);
+$client = new InformationSuperhighwayServiceClient($hostname, $opts, $channel);
 
 // Convert image to b64
 $imageData = file_get_contents('./test_image.jpg');
@@ -36,7 +39,7 @@ $imageBase64 = base64_encode($imageData);
 // Create a request message
 $request = new ImageAnalysisRequest();
 $request->setB64Image($imageBase64);
-$request->setModelName("custom_model"); // make sure to add any new fields to the .proto file and re-run protoc
+$request->setModelName("custom-model"); // make sure to add any new fields to the .proto file and re-run protoc
 
 // Call RPC request method on the server
 try {

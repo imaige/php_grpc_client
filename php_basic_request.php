@@ -4,27 +4,18 @@ require './proto_models/Information_superhighway/InformationSuperhighwayServiceC
 require './proto_models/Information_superhighway/ImageAnalysisRequest.php';
 require './proto_models/Information_superhighway/StatusReply.php';
 
-require './proto_models/internal_api_template_service/TemplateRequest.php';
-require './proto_models/internal_api_template_service/TemplateReply.php';
-require './proto_models/internal_api_template_service/ImageReply.php';
-
 use Grpc\ChannelCredentials;
 use Google\Protobuf\BytesValue;
-use Internal_api_template_service\InternalApiTemplateServiceClient;
-use Internal_api_template_service\TemplateRequest;
-use Internal_api_template_service\TemplateReply;
-// use Internal_api_template_service\ImageAnalysisRequest;
-use Internal_api_template_service\ImageReply;
-//use Internal_api_template_service\ImageAiAnalysisRequest;
 use Information_superhighway\InformationSuperhighwayServiceClient;
 use Information_superhighway\ImageAnalysisRequest;
 use Information_superhighway\StatusReply;
 
-// Set up the gRPC client
-$channel = new Grpc\Channel('localhost:50051', [
+// Set up the gRPC client - note that this channel (rather than $hostname below) defines endpoint URL
+//TODO: figure out gRPC auth here, I assume something like createSecure() rather than createInsecure() & pass in certs
+$channel = new Grpc\Channel('a9ffa50f4239140f1a19f8b8e811593a-1537691390.us-east-2.elb.amazonaws.com:80', [
     'credentials' => ChannelCredentials::createInsecure(),
 ]);
-$hostname = 'localhost:50051';
+$hostname = 'a9ffa50f4239140f1a19f8b8e811593a-1537691390.us-east-2.elb.amazonaws.com:80';
 $opts = [];
 $client = new InformationSuperhighwayServiceClient($hostname, $opts, $channel);
 
@@ -32,23 +23,19 @@ $client = new InformationSuperhighwayServiceClient($hostname, $opts, $channel);
 $imageData = file_get_contents('./test_image.jpg');
 $imageBase64 = base64_encode($imageData);
 
-// Create a TemplateRequest - used for testing purposes
-// $request = new TemplateRequest();
-// $request->setName("calebtest");
-
 // Create a request message
 $request = new ImageAnalysisRequest();
 $request->setB64Image($imageBase64);
-$request->setModelName("custom-model"); // make sure to add any new fields to the .proto file and re-run protoc
+$request->setModelName("custom-model");
+// make sure to add any new fields to the .proto file and re-run protoc, see README.md for info
 
 // Call RPC request method on the server
 try {
     echo "making request" .  PHP_EOL;
     $call = $client->ImageAiAnalysisRequest($request);
-    // Iterate through the stream of responses
+    // Iterate through the stream of responses, which are of type StatusReply
     foreach ($call->responses() as $response) {
         echo "Response from server: " . $response->getMessage() . PHP_EOL;
-        // echo "Response from server: " . $response->getb64image() . PHP_EOL;
     }
 } catch (\Exception $e) {
     echo "Error: " . $e->getMessage();

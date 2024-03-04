@@ -12,7 +12,7 @@ use Information_superhighway\StatusReply;
 
 // Set up the gRPC client - note that this channel (rather than $hostname below) defines endpoint URL
 //TODO: figure out gRPC auth here, I assume something like createSecure() rather than createInsecure() & pass in certs
-$channel = new Grpc\Channel('a9ffa50f4239140f1a19f8b8e811593a-1537691390.us-east-2.elb.amazonaws.com:80', [
+$channel = new Grpc\Channel('localhost:50051', [
     'credentials' => ChannelCredentials::createInsecure(),
 ]);
 $hostname = 'a9ffa50f4239140f1a19f8b8e811593a-1537691390.us-east-2.elb.amazonaws.com:80';
